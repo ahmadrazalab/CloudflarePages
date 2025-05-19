@@ -1,7 +1,3 @@
-Here's the **complete documentation** for deploying to **Cloudflare Pages using GitHub Actions and Tags**, including rollback strategy:
-
----
-
 # 🚀 Cloudflare Pages Deployment via GitHub Tags
 
 This setup ensures:
@@ -150,6 +146,3 @@ git push --tags           # Push rollback tag
 * [x] GitHub Action workflow deployed on tag
 * [x] Use `rollback-*` tags to trigger safe rollback
 
----
-
-Let me know if you want to include versioning metadata in deployed files or automate rollback with a UI/script.
