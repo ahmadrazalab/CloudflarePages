@@ -1,3 +1,4 @@
-name = "dummy" 
+name = "github-action-tag" 
 account_id = "7b421e7585c4371d2c86b61600b86bbc"
 compatibility_date = "2024-01-01" 
+pages_build_output_dir = "./public"
