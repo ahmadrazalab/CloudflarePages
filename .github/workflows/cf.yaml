@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Pages on Tag
 
 on:
   push:
-    branch:
+    tag:
       - '*'
 
 jobs:
