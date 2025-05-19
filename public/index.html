@@ -1,1 +1,140 @@
-v11
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloudflare Pages Tag Deployment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f1f5f9;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cloudflare Pages Deployment via GitHub Tags</h1>
+    <p>Automated production deployments using versioned and rollback tags</p>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📦 How it works</h2>
+      <p>When a tag is pushed to GitHub (like <code>v*</code>, <code>rollback-*</code>, or <code>hotfix-*</code>), GitHub Actions runs a workflow to deploy static files from <code>./public</code> to Cloudflare Pages in the <strong>production</strong> branch.</p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 GitHub Actions Workflow</h2>
+      <pre><code>on:
+  push:
+    tags:
+      - 'v*'
+      - 'rollback-*'
+      - 'hotfix-*'</code></pre>
+      <p>Each tag deploys the code to the <code>main</code> branch in Cloudflare Pages as production.</p>
+    </div>
+
+    <div class="section">
+      <h2>✅ Currently Deployed Tags</h2>
+      <div class="tag-list">
+        <span class="tag">v12</span>
+        <span class="tag">hotfix-v12</span>
+        <span class="tag">rollback-v10</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🧯 Rollback Example</h2>
+      <pre><code>git checkout v10
+git tag rollback-v10
+git push --tags</code></pre>
+      <p>This re-deploys the code from tag <code>v10</code> to production using <code>rollback-v10</code>.</p>
+    </div>
+
+    <div class="section">
+      <h2>🔐 API Token Setup</h2>
+      <p>Create a token from <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare API Tokens</a> and add it as a GitHub secret named <code>CLOUDFLARE_API_TOKEN</code>.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Ahmad Raza — <a href="https://docs.ahmadraza.in" target="_blank">docs.ahmadraza.in</a>
+  </footer>
+
+</body>
+</html>

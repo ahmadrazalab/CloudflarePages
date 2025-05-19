@@ -3,7 +3,9 @@ name: Deploy Tagged Release to Cloudflare Pages
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
+      - 'rollback-*'
+      - 'hotfix-*'
 
 jobs:
   deploy:
