@@ -2,7 +2,7 @@ name: Deploy static site to Cloudflare Pages on Tag
 
 on:
   push:
-    tags:
+    branch:
       - '*'
 
 jobs:
